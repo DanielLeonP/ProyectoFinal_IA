@@ -21,8 +21,9 @@ function conectar() {
             }
         });
 };
+
 module.exports = {
-    "conectar": conectar
+    "conectar": conectar,
 }
 //Base de datos:
 // usuario: IAAdmin
