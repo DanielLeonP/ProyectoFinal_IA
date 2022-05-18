@@ -1,5 +1,4 @@
 var express = require('express');
-const { timeout } = require('nodemon/lib/config');
 var router = express.Router();
 var database = require("../database/database.js");
 
@@ -54,15 +53,6 @@ router.get('/Resultados', function (req, res, next) {
 
 
 });
-
-
-
-
-
-
-
-
-
 
 module.exports = router;
 
