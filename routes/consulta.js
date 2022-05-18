@@ -6,7 +6,7 @@ var database = require("../database/database.js");
 
 
 router.get('/', function (req, res, next) {
-// Pagina de inicio
+    // Pagina de inicio
     res.json({ titulo: 'Pagina de inicio' })
 });
 
@@ -21,24 +21,38 @@ router.get('/Resultados', function (req, res, next) {
     //procesar las respuestas
 
     //obtener datos de la enfermedadad con la que coincide
-    sql = "SELECT * FROM Enfermedades WHERE nombre = 'Cloasma / Melasma';";
-    const resultados = database.consultar(sql);
-    console.log("Respuesta en router "+resultados);
+
+    var nombreEnfermedad = 'Cloasma / Melasma';
+    //iniciar conexion
+    db = database.conectar();
+    //realizar consulta
+    db.query("SELECT * FROM Enfermedades WHERE nombre = ?;", [nombreEnfermedad],
+        function (err, results, fields) {
+            if (err) {
+                console.log(err)
+            } else {
+
+                //Obtener recomendaciones de la enfermedad
+                db = database.conectar();
+                //realizar consulta
+                db.query("SELECT * FROM Recomendaciones WHERE idEnfermedad = ?;", [results[0].idEnfermedad],
+                    function (err, results2, fields) {
+                        if (err) {
+                            console.log(err)
+                        } else {
+                            res.status(200);
+                            res.json({"Enfermedad":results[0], "Recomendaciones": results2});
+                        }
+                    })
+                //Terminar conexion
+                db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
+
+            }
+        })
+    //Terminar conexion
+    db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
 
 
-    // db.query({sql:"SELECT * FROM Enfermedades WHERE nombre = 'Cloasma / Melasma';", timeout:5000,},
-    //     function (err, results, fields) {
-    //         //console.log(fields);    
-    //         if (err) {
-    //             console.log(fields)
-
-    //         } else {
-    //             res.status(200);
-    //             console.log(fields)
-    //             //res.send(fields);
-    //         }
-    //     })
-    // //db.end();
 });
 
 

@@ -1,7 +1,11 @@
 const express = require('express'); 
-const app = express(); 
+
 const bodyParser = require('body-parser'); 
 const consultaRoutes = require('./routes/consulta');
+
+var app = express(); 
+const database = require("./database/database.js");
+
 
 
 app.use(express.json());
