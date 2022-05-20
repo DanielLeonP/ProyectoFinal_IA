@@ -1,4 +1,4 @@
-function DiagnosticoGeneral(respuestaUsuario, matriz, umbral){
+function DiagnosticoGeneral(respuestaUsuario, matriz, umbral) {
 
     //procesar
 
@@ -29,6 +29,8 @@ function DiagnosticoGeneral(respuestaUsuario, matriz, umbral){
 
 
 
+
+
         //Cosas que se deben hacer:
         //sumar los mininos
         //La maxima sumado
@@ -37,9 +39,41 @@ function DiagnosticoGeneral(respuestaUsuario, matriz, umbral){
 
         //especifico: lo mismo pero con menos enfermedades
     }
+
+    return EnfermedadSeleccionada(minimosSumados, umbral);
+}
+function EnfermedadSeleccionada(minimosSumados, umbral) {
+    let id = -1;
+    let mayor = -1;
+    for (let a = 0; a < minimosSumados.length; a++) {
+        if (minimosSumados[a] > mayor) {
+            mayor = minimosSumados[a];
+            id = a;
+        }
+    }
+
+    console.log("El mayor es " + mayor + " y su id es " + id);
+    if (mayor >= umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRAL
+        return [id, mayor]  //Devueve el id y el valor maximo que tubo esa enfermedad
+    } else {
+        return [-1, -1];//Devueve el id -1 (no existe) y -1 como valor maximo (no existió) debido al umbral;
+    }
+
+
+
+    // let minimosSumadosOrdenados = minimosSumados;
+    // let idEnfermedad = [-1, -1];//IdEnfermedad ,  valor
+    // minimosSumadosOrdenados.sort(function (a, b) { return b - a });
+    // if(minimosSumadosOrdenados[0] >= umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRAL
+    //     idEnfermedad = [minimosSumados.indexOf(minimosSumadosOrdenados[0]),minimosSumadosOrdenados[0]];
+    //     a = minimosSumados.indexOf(minimosSumadosOrdenados[0])
+    //     console.log("ENcontrado en " + a)
+    //     console.log(idEnfermedad);        
+    // }
+    // return idEnfermedad;
 }
 
-function DiagnosticoEspecifico(respuestaUsuario, matriz, umbral){
+function DiagnosticoEspecifico(respuestaUsuario, matriz, umbral) {
 }
 
 
