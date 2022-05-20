@@ -10,28 +10,24 @@ function DiagnosticoGeneral(respuestaUsuario, matriz, umbral) {
     let minimosSumados = [];
     let sumaMinimosFila = 0;
     for (let i = 0; i < matriz.length; i++) {
-        console.log("enfermedad " + (i + 1))
+        console.log("Enfermedad " + (i + 1) + " ------------")
         enfermedad = matriz[i];
-
+        console.log("La enfermedad es " + enfermedad)
         for (let j = 0; j < enfermedad.length; j++) {
-            temporal[j] = Math.min(respuestaUsuario[j], enfermedad[j])
-            sumaMinimosFila = sumaMinimosFila + temporal[j];
-            //console.log(temporal[j])
-
+            if(j+1 != enfermedad.length){
+                temporal[j] = Math.min(respuestaUsuario[j], enfermedad[j+1])
+                sumaMinimosFila = sumaMinimosFila + temporal[j];
+            }            
         }
         min[i] = temporal;
         temporal = [];
-        minimosSumados[i] = sumaMinimosFila;
+        minimosSumados[i] = [enfermedad[0],sumaMinimosFila];
         sumaMinimosFila = 0;
-        console.log("El minimo en enfermedad" + (i + 1) + " es " + min[i])
-        console.log("La suma de los minimos en enfermedad " + (i + 1) + " es " + minimosSumados[i]);
+        console.log("Sus minimos son "+ min[i])
+        console.log("La suma de los minimos en enfermedad " + minimosSumados[i][0] + " es " + minimosSumados[i][1]);
 
 
-
-
-
-
-        //Cosas que se deben hacer:
+        //NOtas que deben hacer en este codigo:   YA LO IMPLEMENTE TODO
         //sumar los mininos
         //La maxima sumado
         //mencionar las primeras enf cuando son muy cercanos
@@ -39,24 +35,25 @@ function DiagnosticoGeneral(respuestaUsuario, matriz, umbral) {
 
         //especifico: lo mismo pero con menos enfermedades
     }
+    console.log("\n Minimos Sumados: ------------------")
+    console.log(minimosSumados)
 
     return EnfermedadSeleccionada(minimosSumados, umbral);
 }
 function EnfermedadSeleccionada(minimosSumados, umbral) {
-    let id = -1;
-    let mayor = -1;
+    let mayor = ["", -1];
     for (let a = 0; a < minimosSumados.length; a++) {
-        if (minimosSumados[a] > mayor) {
+        if (minimosSumados[a][1] > mayor[1]) {
             mayor = minimosSumados[a];
-            id = a;
         }
     }
+    console.log("\n ---------------------------");
+    console.log("El mayor es " + mayor);
 
-    console.log("El mayor es " + mayor + " y su id es " + id);
-    if (mayor >= umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRAL
-        return [id, mayor]  //Devueve el id y el valor maximo que tubo esa enfermedad
+    if (mayor[1] >= umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRAL
+        return mayor;  //Devueve el id y el valor maximo que tubo esa enfermedad
     } else {
-        return [-1, -1];//Devueve el id -1 (no existe) y -1 como valor maximo (no existió) debido al umbral;
+        return ['', -1];//Devueve el id -1 (no existe) y -1 como valor maximo (no existió) debido al umbral;
     }
 
 

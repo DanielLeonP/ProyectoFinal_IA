@@ -34,11 +34,11 @@ router.get('/Resultados-Diagnostico-General', function (req, res, next) {
             } else {
                 //llena la matriz enfermedades x sintomas
                 for (var i = 0; i < rows.length; i++) {
-                    matriz.push([rows[i].manchasMarrones, rows[i].manchasBlancas, rows[i].manchasRojas, rows[i].descamacionDeLaPiel, rows[i].SangradoDeLaPiel, rows[i].Picazon, rows[i].Lunares, rows[i].ampollas, rows[i].hongos, rows[i].sudoracion, rows[i].inflamacionDeLaPiel, rows[i].pielSeca, rows[i].pielGangena, rows[i].granosConSebo, rows[i].ronchas]);
+                    matriz.push([rows[i].nombre, rows[i].manchasMarrones, rows[i].manchasBlancas, rows[i].manchasRojas, rows[i].descamacionDeLaPiel, rows[i].SangradoDeLaPiel, rows[i].Picazon, rows[i].Lunares, rows[i].ampollas, rows[i].hongos, rows[i].sudoracion, rows[i].inflamacionDeLaPiel, rows[i].pielSeca, rows[i].pielGangena, rows[i].granosConSebo, rows[i].ronchas]);
                 }
                 console.log(matriz)
 
-                //usa la funcion DiagnosticoGeneral que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [idEnfermedad, valor que resulto]
+                //usa la funcion DiagnosticoGeneral que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
                 let respuestaDiagnostico = diagnostico.DiagnosticoGeneral(respuestaUsuario, matriz, umbral);
 
                 console.log(respuestaDiagnostico)
@@ -52,11 +52,11 @@ router.get('/Resultados-Diagnostico-General', function (req, res, next) {
                     
 
                     //obtener datos de la enfermedadad con la que coincide
-                    var idEnfermedad = respuestaDiagnostico[0];
+                    var nombreEnfermedad = respuestaDiagnostico[0];
                     //iniciar conexion
                     db = database.conectar();
                     //realizar consulta
-                    db.query("SELECT * FROM Enfermedades WHERE idEnfermedad = ?;", [idEnfermedad],
+                    db.query("SELECT * FROM Enfermedades WHERE nombre = ?;", [nombreEnfermedad],
                         function (err, results, fields) {
                             if (err) {
                                 console.log(err)
