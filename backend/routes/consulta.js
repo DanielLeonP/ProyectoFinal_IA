@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var database = require("../database/database.js");
-
+var diagnostico = require("../funciones/diagnosticos.js");
 
 
 router.get('/', function (req, res, next) {
@@ -33,42 +33,10 @@ router.get('/Resultados', function (req, res, next) {
                 }
                 console.log(matriz)
 
-
-
-
-
-
-
                 const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
-
                 const umbral = 0.3;
-                //procesar
 
-                // Cada enfermedad    
-                //Aplicar Max-Min
-                let min = [];
-                let enfermedad= [];
-                let temporal = [];
-                for (let i = 0; i < matriz.length; i++) {
-                    console.log("enfermedad " + (i+1))
-                    enfermedad= matriz[i];
-                    
-                    for (let j = 0; j < enfermedad.length; j++) {
-                        temporal[j] = Math.min(respuestaUsuario[j],enfermedad[j])
-                        //console.log(temporal[j])
-
-                    } 
-                    min[i]= temporal;
-                    temporal = [];
-                    min
-                    console.log("El minimo en "+  (i+1) +" es " + min[i])
-                }
-                
-
-
-
-
-
+                diagnostico.DiagnosticoGeneral(respuestaUsuario, matriz, umbral);
 
             }
         })
