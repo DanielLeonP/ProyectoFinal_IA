@@ -92,13 +92,16 @@ router.get('/Resultados-Diagnostico-Especifico', function (req, res, next) {
 
     const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
     const umbral = 1;
+
+    var nombreEnfermedades = "'Poiderma', 'Dermatitis'";
+
     //Matriz Enfermedades x sintomas
     let matriz = [];
 
     //iniciar conexion
     db = database.conectar();
     //realizar consulta
-    db.query("SELECT * FROM Enfermedades WHERE nombre IN (?)",["'Poiderma', 'Dermatitis'"],
+    db.query("SELECT * FROM Enfermedades WHERE nombre IN (" + nombreEnfermedades + " );",
         function (err, rows, fields) {
             if (err) {
                 console.log(err)
