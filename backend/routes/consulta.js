@@ -17,13 +17,11 @@ router.get('/Diagnostico-Especifico', function (req, res, next) {
 });
 
 router.get('/Resultados-Diagnostico-General', function (req, res, next) {
-
     const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
     const umbral = 1;
 
     //Matriz Enfermedades x sintomas
     let matriz = [];
-
     //iniciar conexion
     db = database.conectar();
     //realizar consulta
@@ -37,20 +35,14 @@ router.get('/Resultados-Diagnostico-General', function (req, res, next) {
                     matriz.push([rows[i].nombre, rows[i].manchasMarrones, rows[i].manchasBlancas, rows[i].manchasRojas, rows[i].descamacionDeLaPiel, rows[i].SangradoDeLaPiel, rows[i].Picazon, rows[i].Lunares, rows[i].ampollas, rows[i].hongos, rows[i].sudoracion, rows[i].inflamacionDeLaPiel, rows[i].pielSeca, rows[i].pielGangena, rows[i].granosConSebo, rows[i].ronchas]);
                 }
                 console.log(matriz)
-
-                //usa la funcion DiagnosticoGeneral que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
-                let respuestaDiagnostico = diagnostico.DiagnosticoGeneral(respuestaUsuario, matriz, umbral);
-
+                //usa la funcion Diagnostico que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
+                let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz, umbral);
                 console.log(respuestaDiagnostico)
-
-
                 if (respuestaDiagnostico[0] == -1) { //El valor no paso el umbral
                     res.status(200);
                     res.json({ Enfermedad: "Ninguna enfermedad coincide con los sintomas", Recomendaciones: {} });
 
                 } else { //existio una enfermedad que paso el umbral
-
-
                     //obtener datos de la enfermedadad con la que coincide
                     var nombreEnfermedad = respuestaDiagnostico[0];
                     //iniciar conexion
@@ -79,9 +71,7 @@ router.get('/Resultados-Diagnostico-General', function (req, res, next) {
                         })
                     //Terminar conexion
                     db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
-
                 }
-
             }
         })
     //Terminar conexion
@@ -89,10 +79,8 @@ router.get('/Resultados-Diagnostico-General', function (req, res, next) {
 });
 
 router.get('/Resultados-Diagnostico-Especifico', function (req, res, next) {
-
     const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
     const umbral = 1;
-
     var nombreEnfermedades = "'Poiderma', 'Dermatitis'";
 
     //Matriz Enfermedades x sintomas
@@ -112,19 +100,16 @@ router.get('/Resultados-Diagnostico-Especifico', function (req, res, next) {
                 }
                 console.log(matriz)
 
-                //usa la funcion DiagnosticoGeneral que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
-                let respuestaDiagnostico = diagnostico.DiagnosticoGeneral(respuestaUsuario, matriz, umbral);
+                //usa la funcion Diagnostico que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
+                let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz, umbral);
 
                 console.log(respuestaDiagnostico)
-
 
                 if (respuestaDiagnostico[0] == -1) { //El valor no paso el umbral
                     res.status(200);
                     res.json({ Enfermedad: "Ninguna enfermedad coincide con los sintomas", Recomendaciones: {} });
 
                 } else { //existio una enfermedad que paso el umbral
-
-
                     //obtener datos de la enfermedadad con la que coincide
                     var nombreEnfermedad = respuestaDiagnostico[0];
                     //iniciar conexion
@@ -153,9 +138,7 @@ router.get('/Resultados-Diagnostico-Especifico', function (req, res, next) {
                         })
                     //Terminar conexion
                     db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
-
                 }
-
             }
         })
     //Terminar conexion

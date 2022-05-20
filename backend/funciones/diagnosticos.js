@@ -1,4 +1,4 @@
-function DiagnosticoGeneral(respuestaUsuario, matriz, umbral) {
+function Diagnostico(respuestaUsuario, matriz, umbral) {
 
     //procesar
 
@@ -70,11 +70,6 @@ function EnfermedadSeleccionada(minimosSumados, umbral) {
     // return idEnfermedad;
 }
 
-function DiagnosticoEspecifico(respuestaUsuario, matriz, umbral) {
-}
-
-
 module.exports = {
-    "DiagnosticoGeneral": DiagnosticoGeneral,
-    "DiagnosticoEspecifico": DiagnosticoEspecifico
+    "Diagnostico": Diagnostico,
 }
