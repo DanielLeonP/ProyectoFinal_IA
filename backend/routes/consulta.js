@@ -58,7 +58,7 @@ router.get('/Resultados-Diagnostico-General', function (req, res, next) {
                     //iniciar conexion
                     db = database.conectar();
                     //realizar consulta
-                    db.query("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades,
+                    db.query("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";",
                         function (err, results, fields) {
                             if (err) {
                                 console.log(err)
