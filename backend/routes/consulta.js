@@ -146,9 +146,3 @@ router.get('/Resultados-Diagnostico-Especifico', function (req, res, next) {
 });
 
 module.exports = router;
-
-
-
-
-
-
