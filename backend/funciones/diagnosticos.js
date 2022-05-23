@@ -1,7 +1,4 @@
 function Diagnostico(respuestaUsuario, matriz, umbral) {
-
-    //procesar
-
     // Cada enfermedad    
     //Aplicar Max-Min
     let min = [];
@@ -14,16 +11,16 @@ function Diagnostico(respuestaUsuario, matriz, umbral) {
         enfermedad = matriz[i];
         console.log("La enfermedad es " + enfermedad)
         for (let j = 0; j < enfermedad.length; j++) {
-            if(j+1 != enfermedad.length){
-                temporal[j] = Math.min(respuestaUsuario[j], enfermedad[j+1])
+            if (j + 1 != enfermedad.length) {
+                temporal[j] = Math.min(respuestaUsuario[j], enfermedad[j + 1])
                 sumaMinimosFila = sumaMinimosFila + temporal[j];
-            }            
+            }
         }
         min[i] = temporal;
         temporal = [];
-        minimosSumados[i] = [enfermedad[0],sumaMinimosFila];
+        minimosSumados[i] = [enfermedad[0], sumaMinimosFila];
         sumaMinimosFila = 0;
-        console.log("Sus minimos son "+ min[i])
+        console.log("Sus minimos son " + min[i])
         console.log("La suma de los minimos en enfermedad " + minimosSumados[i][0] + " es " + minimosSumados[i][1]);
 
 
@@ -41,33 +38,34 @@ function Diagnostico(respuestaUsuario, matriz, umbral) {
     return EnfermedadSeleccionada(minimosSumados, umbral);
 }
 function EnfermedadSeleccionada(minimosSumados, umbral) {
-    let mayor = ["", -1];
-    for (let a = 0; a < minimosSumados.length; a++) {
-        if (minimosSumados[a][1] > mayor[1]) {
-            mayor = minimosSumados[a];
+
+    const bubbleSort = arr => {
+        const l = arr.length;
+        for (let i = 0; i < l; i++) {
+            for (let j = 0; j < l - 1 - i; j++) {
+                if (arr[j][1] < arr[j + 1][1]) {
+                    [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                }
+            }
         }
-    }
-    console.log("\n ---------------------------");
-    console.log("El mayor es " + mayor);
+        return arr;
+    };
+    console.log("\n Suma de minimos ordenados mayor - menor: ------------------")
+    const minimosSumadosOrdenados = bubbleSort(minimosSumados);
+    console.log(minimosSumadosOrdenados);
 
-    if (mayor[1] >= umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRAL
-        return mayor;  //Devueve el id y el valor maximo que tubo esa enfermedad
+    let mayor;
+
+    mayor = minimosSumadosOrdenados[0]
+
+    if (mayor[1] > umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRALconsole.log("\n ---------------------------");
+        console.log("\n ////////////////// \n El mayor es " + mayor);
+        return [mayor];  //Devueve el id y el valor maximo que tubo esa enfermedad
     } else {
-        return ['', -1];//Devueve el id -1 (no existe) y -1 como valor maximo (no existió) debido al umbral;
+        console.log("\n ---------------------------");
+        console.log("Ninguna enfermedad sobrepaso el umbral");
+        return [['', -1]];//Devueve el nombre vacio (no existe) y -1 como valor maximo (no existió) debido al umbral;
     }
-
-
-
-    // let minimosSumadosOrdenados = minimosSumados;
-    // let idEnfermedad = [-1, -1];//IdEnfermedad ,  valor
-    // minimosSumadosOrdenados.sort(function (a, b) { return b - a });
-    // if(minimosSumadosOrdenados[0] >= umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRAL
-    //     idEnfermedad = [minimosSumados.indexOf(minimosSumadosOrdenados[0]),minimosSumadosOrdenados[0]];
-    //     a = minimosSumados.indexOf(minimosSumadosOrdenados[0])
-    //     console.log("ENcontrado en " + a)
-    //     console.log(idEnfermedad);        
-    // }
-    // return idEnfermedad;
 }
 
 module.exports = {
