@@ -54,18 +54,30 @@ function EnfermedadSeleccionada(minimosSumados, umbral) {
     const minimosSumadosOrdenados = bubbleSort(minimosSumados);
     console.log(minimosSumadosOrdenados);
 
-    let mayor;
-
-    mayor = minimosSumadosOrdenados[0]
-
-    if (mayor[1] > umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRALconsole.log("\n ---------------------------");
-        console.log("\n ////////////////// \n El mayor es " + mayor);
-        return [mayor];  //Devueve el id y el valor maximo que tubo esa enfermedad
-    } else {
-        console.log("\n ---------------------------");
-        console.log("Ninguna enfermedad sobrepaso el umbral");
+    var respuesta=[];
+    for (let e = 0; e < minimosSumadosOrdenados.length; e++) {
+        if(minimosSumadosOrdenados[e][1] > umbral){
+            respuesta.push(minimosSumadosOrdenados[e]);            
+        }        
+    }
+    if (respuesta.length != 0 ) {
+        return respuesta; //Devueve el nombre y el valor maximo que tubo esa enfermedad
+    }else {
         return [['', -1]];//Devueve el nombre vacio (no existe) y -1 como valor maximo (no existió) debido al umbral;
     }
+
+    // let mayor;
+
+    // mayor = minimosSumadosOrdenados[0]
+
+    // if (mayor[1] > umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRALconsole.log("\n ---------------------------");
+    //     console.log("\n ////////////////// \n El mayor es " + mayor);
+    //     return [mayor];  //Devueve el id y el valor maximo que tubo esa enfermedad
+    // } else {
+    //     console.log("\n ---------------------------");
+    //     console.log("Ninguna enfermedad sobrepaso el umbral");
+    //     return [['', -1]];//Devueve el nombre vacio (no existe) y -1 como valor maximo (no existió) debido al umbral;
+    // }
 }
 
 module.exports = {
