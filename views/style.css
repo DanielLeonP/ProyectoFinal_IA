@@ -1,0 +1,255 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+html{
+    width: 100%;
+    height: 100%;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+
+.img-container{
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    bottom: 0;
+    overflow: hidden;
+    background-image: url(img/background.png);
+    background-size: cover;
+    z-index: -1;
+}
+#back-img{
+    object-fit: cover;
+    bottom: 0px;
+    z-index: -1;
+    height: fit-content;
+}
+
+#human{
+    height: 170px;
+    width: 170px;
+    position: absolute;
+    align-self: center;
+    bottom: calc(15%);
+}
+
+.separator{
+    height: 40px;
+}
+
+.info{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.button{
+    width: 250px;
+    height: 150px;
+    margin: 20px;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    font-family: 'Ubuntu', sans-serif;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    border: none;
+}
+
+#d-general{
+    background-color: #FF4757;
+}
+
+#d-especifico{
+    background-color: #2ED573;
+}
+
+#d-general:hover{
+    background-color: #d1202f;
+}
+
+#d-especifico:hover{
+    background-color: #0fa34d;
+}
+
+a{
+    text-decoration: none; 
+    color: inherit;
+    width: calc(100%/3);
+    height: 100%;
+    cursor: pointer;
+}
+
+.navbar{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 70px;
+    align-items: center;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    flex-wrap: nowrap;
+}
+
+h1{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+}
+
+.navbar-option{
+    padding: 5px;
+    text-align: center;
+    position: relative;
+    top: calc(50% - 16px);
+}
+
+#navbar-dgeneral a{
+    background-color: #FF4757;
+}
+
+#navbar-dgeneral a:hover{
+    background-color: #ff6572;
+    border-left: 1px solid #cfcfcf;
+    border-right: 1px solid #cfcfcf;
+}
+
+#navbar-despecifico a{
+    background-color: #2ED573;
+}
+
+#navbar-despecifico a:hover{
+    background-color: #42c97a;
+    border-left: 1px solid #cfcfcf;
+    border-right: 1px solid #cfcfcf;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.question-container, .container-range{
+    display: flex;
+    flex-direction: column;
+    font-family: 'Inter', sans-serif;
+    font-size: 24px;
+    width: 70%;
+    padding: 20px;
+    background-color: #F6F2F2;
+    border-radius: 20px;
+    margin: 10px 0 20px 0;
+}
+
+.question-container > *, .container-range > *{
+    margin: 5px 0 5px 0;
+}
+
+.question-container > p, .container-range > p{
+    margin-bottom: 15px;
+}
+
+.container-range{
+    text-align: center;
+}
+
+.radio-option, .check-option{
+    padding-left: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.radio-option > *, .check-option > *{
+    cursor: pointer;
+}
+
+input[type="submit"]{
+    font-family: 'Inter', sans-serif;
+    color: white;
+    font-size: 24px;
+    padding: 30px 70px 30px 70px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+input[type="radio"], input[type="checkbox"]{
+    height: 20px;
+    width: 20px;
+    margin-right: 15px;
+}
+
+input[type = "range"]{
+    width: 70%;
+    align-self: center;
+}
+
+#submit-general{
+    background-color: #FF4757;
+}
+
+#submit-general:hover{
+    background-color: #ff6572;
+}
+
+#submit-especifico{
+    background-color: #2ED573;
+}
+
+#submit-especifico:hover{
+    background-color: #42c97a;
+}
+
+.range-img-container{
+    width: calc(70% + 50px);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-self: center;
+}
+
+.range-img-container img{
+    width: 50px;
+}
+
+footer{
+    width: 100%;
+    height: 500px;
+    background-image: url("img/background.png");
+}
+@media only screen and (max-width: 880px) {
+    .info{
+        font-size: 20px;
+    }
+
+    #human{
+        display: none;
+    }
+}
