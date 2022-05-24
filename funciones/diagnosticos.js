@@ -60,7 +60,7 @@ function EnfermedadSeleccionada(minimosSumados, umbral) {
             respuesta.push(minimosSumadosOrdenados[e]);            
         }        
     }
-
+    
     //Verificar que las enfermedades que sobrepasan el umbral tengan un margen de valor mínimo. EJ: 2.7, 2.72, 2.27, y no sean asi: 2.7 2.9 3.2
 
 

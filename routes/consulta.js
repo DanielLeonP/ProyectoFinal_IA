@@ -20,13 +20,28 @@ router.get('/Diagnostico-Especifico', function (req, res, next) {
 });
 
 router.post('/Resultados-Diagnostico-General', function (req, res, next) {
-    var reqBody = req.body;
-    console.log(reqBody);
+    //var reqBody = req.body;
+    var manchasMarrones = parseFloat(req.body.manchasMarrones);
+    var manchasBlancas = parseFloat(req.body.manchasBlancas);
+    var manchasRojas = parseFloat(req.body.manchasRojas);
+    var descamacion = parseFloat(req.body.descamacion);
+    var dolorSangrado = parseFloat(req.body.dolorSangrado);
+    var dolorPicazon = parseFloat(req.body.dolorPicazon);
+    var lunares = parseFloat(req.body.lunares);
+    var dolorAmpollas = parseFloat(req.body.dolorAmpollas);
+    var hongos = parseFloat(req.body.hongos);
+    var sudoracion = parseFloat(req.body.sudoracion);
+    var inflamacion = parseFloat(req.body.inflamacion);
+    var pielSeca = parseFloat(req.body.pielSeca);
+    var dolorGangrena = parseFloat(req.body.dolorGangrena);
+    var granosSebo = parseFloat(req.body.granosSebo);
+    var ronchas = parseFloat(req.body.ronchas);
+    const respuestaUsuario =[manchasMarrones,manchasBlancas, manchasRojas, descamacion, dolorSangrado, dolorPicazon, lunares, dolorAmpollas, hongos, sudoracion, inflamacion, pielSeca, dolorGangrena, granosSebo, ronchas];
+    console.log(respuestaUsuario)
 
-    console.log("PRUEBA: "+reqBody.descamacion)
 
-    const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
-    const umbral = 2.5;
+    //const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
+    const umbral = 3;
 
     //Matriz Enfermedades x sintomas
     let matriz = [];
