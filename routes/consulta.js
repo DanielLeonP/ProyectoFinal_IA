@@ -6,7 +6,9 @@ var diagnostico = require("../funciones/diagnosticos.js");
 
 router.get('/', function (req, res, next) {
     // Pagina de inicio
-    res.json({ titulo: 'Pagina de inicio' })
+    res.status(200);
+    res.render('index.ejs');
+    //res.json({ titulo: 'Pagina de inicio' })
 });
 
 router.get('/Diagnostico-General', function (req, res, next) {
