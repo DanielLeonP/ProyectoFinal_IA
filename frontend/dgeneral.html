@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;800;900&family=Ubuntu:wght@300;500;700&display=swap" rel="stylesheet">
+    <title>Diagnóstico General</title>
+</head>
+<body>
+    <div class="navbar" id="navbar-dgeneral">
+        <a href="index.html">
+            <div class="navbar-option"><b>Inicio</b></div>
+        </a>
+        <a href="despecifico.html">
+            <div class="navbar-option"><b>Diagnóstico Específico</b></div>
+        </a>
+        <a href="">
+            <div class="navbar-option"><b>Módulo Precargado</b></div>
+        </a>
+    </div>
+
+    
+    <h1><b>Diagnóstico General</b></h1>
+
+    <form action="">
+
+        <div class="question-container">
+            <p>1. ¿Presentas manchas marrones?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="manchasMarrones" id="manchasMarronesNada" value="">
+                <label for="manchasMarronesNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="manchasMarrones" id="manchasMarronesPoco" value="">
+                <label for="manchasMarronesPoco">Poco</label>
+            </div>
+
+
+            <div class="radio-option">
+                <input type="radio" name="manchasMarrones" id="manchasMarronesMucho" value="">
+                <label for="manchasMarronesMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>2. ¿Presentas manchas blancas?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="manchasBlancas" id="manchasBlancasNada" value="">
+                <label for="manchasBlancasNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="manchasBlancas" id="manchasBlancasPoco" value="">
+                <label for="manchasBlancasPoco">Poco</label>
+            </div>
+
+
+            <div class="radio-option">
+                <input type="radio" name="manchasBlancas" id="manchasBlancasMucho" value="">
+                <label for="manchasBlancasMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>3. ¿Presentas manchas rojas?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="manchasRojas" id="manchasRojasNada" value="">
+                <label for="manchasRojasNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="manchasRojas" id="manchasRojasPoco" value="">
+                <label for="manchasRojasPoco">Poco</label>
+            </div>
+
+
+            <div class="radio-option">
+                <input type="radio" name="manchasRojas" id="manchasRojasMucho" value="">
+                <label for="manchasRojasMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>4. ¿Presentas descamación de la piel?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="descamacion" id="descamacionNada" value="">
+                <label for="descamacionNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="descamacion" id="descamacionAlgo" value="">
+                <label for="descamacionAlgo">Algo</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="descamacion" id="descamacionPoco" value="">
+                <label for="descamacionPoco">Poco</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="descamacion" id="descamacionBastante" value="">
+                <label for="descamacionBastante">Bastante</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="descamacion" id="descamacionMucho" value="">
+                <label for="descamacionMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>5. ¿Presentas sangrado de la piel?... Si es así, ¿Cuánto dolor sientes?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="dolorSangrado" id="dolorSangrado_SinDolor" value="">
+                <label for="dolorSangrado_SinDolor">Sin Dolor</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorSangrado" id="dolorSangrado_DolorLeve" value="">
+                <label for="dolorSangrado_DolorLeve">Dolor leve</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorSangrado" id="dolorSangrado_DolorModer" value="">
+                <label for="dolorSangrado_DolorModer">Dolor moderado</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorSangrado" id="dolorSangrado_DolorInt" value="">
+                <label for="dolorSangrado_DolorInt">Dolor intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorSangrado" id="dolorSangrado_DolorMuyInt" value="">
+                <label for="dolorSangrado_DolorMuyInt">Dolor muy intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorSangrado" id="dolorSangrado_DolorInsp" value="">
+                <label for="dolorSangrado_DolorInsp">Dolor insoportable</label>
+            </div>
+
+        </div>
+
+
+        
+
+
+
+        <div class="question-container">
+            <p>6. ¿Presentas picazón?... Si es así, ¿Cuánto dolor sientes?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="dolorPicazon" id="dolorPicazon_SinDolor" value="">
+                <label for="dolorPicazon_SinDolor">Sin Dolor</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorPicazon" id="dolorPicazon_DolorLeve" value="">
+                <label for="dolorPicazon_DolorLeve">Dolor leve</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorPicazon" id="dolorPicazon_DolorModer" value="">
+                <label for="dolorPicazon_DolorModer">Dolor moderado</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorPicazon" id="dolorPicazon_DolorInt" value="">
+                <label for="dolorPicazon_DolorInt">Dolor intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorPicazon" id="dolorPicazon_DolorMuyInt" value="">
+                <label for="dolorPicazon_DolorMuyInt">Dolor muy intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorPicazon" id="dolorPicazon_DolorInsp" value="">
+                <label for="dolorPicazon_DolorInsp">Dolor insoportable</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>7. ¿Presentas lunares?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="lunares" id="lunaresNada" value="">
+                <label for="lunaresNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="lunares" id="lunaresPoco" value="">
+                <label for="lunaresPoco">Poco</label>
+            </div>
+
+
+            <div class="radio-option">
+                <input type="radio" name="lunares" id="lunaresMucho" value="">
+                <label for="lunaresMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+        
+
+
+
+        <div class="question-container">
+            <p>8. ¿Presentas ampollas?... Si es así, ¿Cuánto dolor sientes?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="dolorAmpollas" id="dolorAmpollas_SinDolor" value="">
+                <label for="dolorAmpollas_SinDolor">Sin Dolor</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorAmpollas" id="dolorAmpollas_DolorLeve" value="">
+                <label for="dolorAmpollas_DolorLeve">Dolor leve</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorAmpollas" id="dolorAmpollas_DolorModer" value="">
+                <label for="dolorAmpollas_DolorModer">Dolor moderado</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorAmpollas" id="dolorAmpollas_DolorInt" value="">
+                <label for="dolorAmpollas_DolorInt">Dolor intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorAmpollas" id="dolorAmpollas_DolorMuyInt" value="">
+                <label for="dolorAmpollas_DolorMuyInt">Dolor muy intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorAmpollas" id="dolorAmpollas_DolorInsp" value="">
+                <label for="dolorAmpollas_DolorInsp">Dolor insoportable</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>9. ¿Presentas hongos?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="hongos" id="hongosNada" value="">
+                <label for="hongosNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="hongos" id="hongosAlgo" value="">
+                <label for="hongosAlgo">Algo</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="hongos" id="hongosPoco" value="">
+                <label for="hongosPoco">Poco</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="hongos" id="hongosBastante" value="">
+                <label for="hongosBastante">Bastante</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="hongos" id="hongosMucho" value="">
+                <label for="hongosMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>10. ¿Presentas sudoración?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="sudoracion" id="sudoracionNada" value="">
+                <label for="sudoracionNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="sudoracion" id="sudoracionAlgo" value="">
+                <label for="sudoracionAlgo">Algo</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="sudoracion" id="sudoracionPoco" value="">
+                <label for="sudoracionPoco">Poco</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="sudoracion" id="sudoracionBastante" value="">
+                <label for="sudoracionBastante">Bastante</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="sudoracion" id="sudoracionMucho" value="">
+                <label for="sudoracionMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>11. ¿Presentas inflamación?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="inflamacion" id="inflamacionNada" value="">
+                <label for="inflamacionNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="inflamacion" id="inflamacionAlgo" value="">
+                <label for="inflamacionAlgo">Algo</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="inflamacion" id="inflamacionPoco" value="">
+                <label for="inflamacionPoco">Poco</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="inflamacion" id="inflamacionBastante" value="">
+                <label for="inflamacionBastante">Bastante</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="inflamacion" id="inflamacionMucho" value="">
+                <label for="inflamacionMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>12. ¿Presentas piel seca?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="pielSeca" id="pielSecaNada" value="">
+                <label for="pielSecaNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="pielSeca" id="pielSecaAlgo" value="">
+                <label for="pielSecaAlgo">Algo</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="pielSeca" id="pielSecaPoco" value="">
+                <label for="pielSecaPoco">Poco</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="pielSeca" id="pielSecaBastante" value="">
+                <label for="pielSecaBastante">Bastante</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="pielSeca" id="pielSecaMucho" value="">
+                <label for="pielSecaMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+        
+
+
+
+        <div class="question-container">
+            <p>13. ¿Presentas piel gangrena?... Si es así, ¿Cuánto dolor sientes?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="dolorGangrena" id="dolorGangrena_SinDolor" value="">
+                <label for="dolorGangrena_SinDolor">Sin Dolor</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorGangrena" id="dolorGangrena_DolorLeve" value="">
+                <label for="dolorGangrena_DolorLeve">Dolor leve</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorGangrena" id="dolorGangrena_DolorModer" value="">
+                <label for="dolorGangrena_DolorModer">Dolor moderado</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorGangrena" id="dolorGangrena_DolorInt" value="">
+                <label for="dolorGangrena_DolorInt">Dolor intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorGangrena" id="dolorGangrena_DolorMuyInt" value="">
+                <label for="dolorGangrena_DolorMuyInt">Dolor muy intenso</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="dolorGangrena" id="dolorGangrena_DolorInsp" value="">
+                <label for="dolorGangrena_DolorInsp">Dolor insoportable</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>14. ¿Presentas granos con sebo?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="granosSebo" id="granosSeboNada" value="">
+                <label for="granosSeboNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="granosSebo" id="granosSeboAlgo" value="">
+                <label for="granosSeboAlgo">Algo</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="granosSebo" id="granosSeboPoco" value="">
+                <label for="granosSeboPoco">Poco</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="granosSebo" id="granosSeboBastante" value="">
+                <label for="granosSeboBastante">Bastante</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="granosSebo" id="granosSeboMucho" value="">
+                <label for="granosSeboMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+
+        <div class="question-container">
+            <p>15. ¿Presentas ronchas?</p>
+            
+            <div class="radio-option">
+                <input type="radio" name="ronchas" id="ronchasNada" value="">
+                <label for="ronchasNada">Nada</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="ronchas" id="ronchasAlgo" value="">
+                <label for="ronchasAlgo">Algo</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="ronchas" id="ronchasPoco" value="">
+                <label for="ronchasPoco">Poco</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="ronchas" id="ronchasBastante" value="">
+                <label for="ronchasBastante">Bastante</label>
+            </div>
+
+            <div class="radio-option">
+                <input type="radio" name="ronchas" id="ronchasMucho" value="">
+                <label for="ronchasMucho">Mucho</label>
+            </div>
+
+        </div>
+
+
+        <div class="separator"></div>
+
+        <input type="submit" value="Diagnosticar" id="submit-general">
+
+    </form>
+
+    <footer></footer>
+</body>
+</html>
