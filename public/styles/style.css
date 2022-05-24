@@ -1,18 +1,20 @@
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
-html{
-    width: 100%;
-    height: 100%;
-}
-body{
+
+html {
     width: 100%;
     height: 100%;
 }
 
-.img-container{
+body {
+    width: 100%;
+    height: 100%;
+}
+
+.img-container {
     position: absolute;
     width: 100%;
     height: 50%;
@@ -21,18 +23,19 @@ body{
     flex-direction: column;
     bottom: 0;
     overflow: hidden;
-    background-image: url(img/background.png);
+    background-image: url(../img/background.png);
     background-size: cover;
     z-index: -1;
 }
-#back-img{
+
+#back-img {
     object-fit: cover;
     bottom: 0px;
     z-index: -1;
     height: fit-content;
 }
 
-#human{
+#human {
     height: 170px;
     width: 170px;
     position: absolute;
@@ -40,11 +43,11 @@ body{
     bottom: calc(15%);
 }
 
-.separator{
+.separator {
     height: 40px;
 }
 
-.info{
+.info {
     font-family: 'Ubuntu', sans-serif;
     font-size: 30px;
     width: 100%;
@@ -55,7 +58,7 @@ body{
     flex-wrap: wrap;
 }
 
-.button-container{
+.button-container {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
@@ -63,7 +66,7 @@ body{
     justify-content: space-evenly;
 }
 
-.button{
+.button {
     width: 250px;
     height: 150px;
     margin: 20px;
@@ -77,31 +80,31 @@ body{
     border: none;
 }
 
-#d-general{
+#d-general {
     background-color: #FF4757;
 }
 
-#d-especifico{
+#d-especifico {
     background-color: #2ED573;
 }
 
-#d-general:hover{
+#d-general:hover {
     background-color: #d1202f;
 }
 
-#d-especifico:hover{
+#d-especifico:hover {
     background-color: #0fa34d;
 }
 
-a{
-    text-decoration: none; 
+a {
+    text-decoration: none;
     color: inherit;
     width: calc(100%/3);
     height: 100%;
     cursor: pointer;
 }
 
-.navbar{
+.navbar {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -113,7 +116,7 @@ a{
     flex-wrap: nowrap;
 }
 
-h1{
+h1 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 30px;
     width: 100%;
@@ -121,40 +124,42 @@ h1{
     text-align: center;
 }
 
-.navbar-option{
+.navbar-option {
     padding: 5px;
     text-align: center;
     position: relative;
     top: calc(50% - 16px);
 }
 
-#navbar-dgeneral a{
+#navbar-dgeneral a {
     background-color: #FF4757;
 }
 
-#navbar-dgeneral a:hover{
+#navbar-dgeneral a:hover {
     background-color: #ff6572;
     border-left: 1px solid #cfcfcf;
     border-right: 1px solid #cfcfcf;
 }
 
-#navbar-despecifico a{
+#navbar-despecifico a {
     background-color: #2ED573;
 }
 
-#navbar-despecifico a:hover{
+#navbar-despecifico a:hover {
     background-color: #42c97a;
     border-left: 1px solid #cfcfcf;
     border-right: 1px solid #cfcfcf;
 }
 
-form{
+form {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.question-container, .container-range{
+
+.question-container,
+.container-range {
     display: flex;
     flex-direction: column;
     font-family: 'Inter', sans-serif;
@@ -166,30 +171,34 @@ form{
     margin: 10px 0 20px 0;
 }
 
-.question-container > *, .container-range > *{
+.question-container>*,
+.container-range>* {
     margin: 5px 0 5px 0;
 }
 
-.question-container > p, .container-range > p{
+.question-container>p,
+.container-range>p {
     margin-bottom: 15px;
 }
 
-.container-range{
+.container-range {
     text-align: center;
 }
 
-.radio-option, .check-option{
+.radio-option,
+.check-option {
     padding-left: 20px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
-.radio-option > *, .check-option > *{
+.radio-option>*,
+.check-option>* {
     cursor: pointer;
 }
 
-input[type="submit"]{
+input[type="submit"] {
     font-family: 'Inter', sans-serif;
     color: white;
     font-size: 24px;
@@ -200,34 +209,35 @@ input[type="submit"]{
     cursor: pointer;
 }
 
-input[type="radio"], input[type="checkbox"]{
+input[type="radio"],
+input[type="checkbox"] {
     height: 20px;
     width: 20px;
     margin-right: 15px;
 }
 
-input[type = "range"]{
+input[type="range"] {
     width: 70%;
     align-self: center;
 }
 
-#submit-general{
+#submit-general {
     background-color: #FF4757;
 }
 
-#submit-general:hover{
+#submit-general:hover {
     background-color: #ff6572;
 }
 
-#submit-especifico{
+#submit-especifico {
     background-color: #2ED573;
 }
 
-#submit-especifico:hover{
+#submit-especifico:hover {
     background-color: #42c97a;
 }
 
-.range-img-container{
+.range-img-container {
     width: calc(70% + 50px);
     display: flex;
     flex-direction: row;
@@ -235,21 +245,22 @@ input[type = "range"]{
     align-self: center;
 }
 
-.range-img-container img{
+.range-img-container img {
     width: 50px;
 }
 
-footer{
+footer {
     width: 100%;
     height: 500px;
-    background-image: url("img/background.png");
+    background-image: url(../img/background.png);
 }
+
 @media only screen and (max-width: 880px) {
-    .info{
+    .info {
         font-size: 20px;
     }
 
-    #human{
+    #human {
         display: none;
     }
 }
