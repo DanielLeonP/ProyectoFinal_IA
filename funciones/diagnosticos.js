@@ -67,7 +67,7 @@ function EnfermedadSeleccionada(minimosSumados, umbral) {
     if (respuesta.length != 0 ) {
         return respuesta; //Devueve el nombre y el valor maximo que tubo esa enfermedad
     }else {
-        return [['', -1]];//Devueve el nombre vacio (no existe) y -1 como valor maximo (no existió) debido al umbral;
+        return []//[['', -1]];//Devueve el nombre vacio (no existe) y -1 como valor maximo (no existió) debido al umbral;
     }
 
     // let mayor;
