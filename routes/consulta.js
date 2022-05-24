@@ -20,9 +20,6 @@ router.get('/Diagnostico-Especifico', function (req, res, next) {
 });
 
 router.post('/Resultados-Diagnostico-General', function (req, res, next) {
-
-    console.log(req.body);
-
     const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
     const umbral = 2.5;
 
@@ -108,7 +105,7 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
 });
 
 router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
-
+    
     const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
     const umbral = 2.6;
     var Enfermedades = "'Poiderma', 'Dermatitis'";
