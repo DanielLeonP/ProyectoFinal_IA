@@ -55,11 +55,15 @@ function EnfermedadSeleccionada(minimosSumados, umbral) {
     console.log(minimosSumadosOrdenados);
 
     var respuesta=[];
-    for (let e = 0; e < minimosSumadosOrdenados.length; e++) {
+    for (let e = 0; e < minimosSumadosOrdenados.length; e++) {//Validar que enfermedades sí sobrepasan el umbra
         if(minimosSumadosOrdenados[e][1] > umbral){
             respuesta.push(minimosSumadosOrdenados[e]);            
         }        
     }
+
+    //Verificar que las enfermedades que sobrepasan el umbral tengan un margen de valor mínimo. EJ: 2.7, 2.72, 2.27, y no sean asi: 2.7 2.9 3.2
+
+
     if (respuesta.length != 0 ) {
         return respuesta; //Devueve el nombre y el valor maximo que tubo esa enfermedad
     }else {
