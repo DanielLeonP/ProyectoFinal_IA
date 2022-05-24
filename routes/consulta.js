@@ -12,10 +12,11 @@ router.get('/', function (req, res, next) {
 
 router.get('/Diagnostico-General', function (req, res, next) {
     // Enviar formulario
-    res.render('a.ejs');
+    res.render('dgeneral.ejs');
 });
 router.get('/Diagnostico-Especifico', function (req, res, next) {
     // Enviar formulario
+    res.render('despecifico.ejs');
 });
 
 router.get('/Resultados-Diagnostico-General', function (req, res, next) {
