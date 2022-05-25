@@ -1,7 +1,7 @@
 function Diagnostico(respuestaUsuario, matriz) {
     // Cada enfermedad    
     //Aplicar Max-Min
-    let umbral = 0;
+    let umbral = 1.3;
     let min = [];
     let enfermedad = [];
     let temporal = [];
@@ -25,7 +25,7 @@ function Diagnostico(respuestaUsuario, matriz) {
         sumaMinimosFila = 0;
         // console.log("Sus minimos son " + min[i])
         console.log("La suma de los minimos en enfermedad " + minimosSumados[i][0] + " es " + minimosSumados[i][1]);
-        umbral = umbral + minimosSumados[i][1];
+        //umbral = umbral + minimosSumados[i][1];
     }
     // console.log("-----------------------------------------------------");
     // console.log("\n Minimos Sumados: \n");

@@ -110,7 +110,9 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
                                             console.log(err)
                                         } else {
                                             res.status(200);
-                                            res.json({ "Enfermedad": results[0], "Recomendaciones": results2 });
+                                            // res.json({ "Enfermedad": results[0], "Recomendaciones": results2 });
+                                            res.render('resultados.ejs', {Enfermedad: results[0], Recomendaciones: results2});
+
                                         }
                                     })
                                 //Terminar conexion
