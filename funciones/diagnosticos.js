@@ -1,15 +1,18 @@
-function Diagnostico(respuestaUsuario, matriz, umbral) {
+function Diagnostico(respuestaUsuario, matriz) {
     // Cada enfermedad    
     //Aplicar Max-Min
+    let umbral = 0;
     let min = [];
     let enfermedad = [];
     let temporal = [];
     let minimosSumados = [];
     let sumaMinimosFila = 0;
+    console.log("-----------------------------------------------------");
+    console.log("SUMATORIA DE LOS MINIMOS POR ENFERMEDAD ");
     for (let i = 0; i < matriz.length; i++) {
         console.log("Enfermedad " + (i + 1) + " ------------")
         enfermedad = matriz[i];
-        console.log("La enfermedad es " + enfermedad)
+        //console.log("La enfermedad es " + enfermedad)
         for (let j = 0; j < enfermedad.length; j++) {
             if (j + 1 != enfermedad.length) {
                 temporal[j] = Math.min(respuestaUsuario[j], enfermedad[j + 1])
@@ -20,20 +23,16 @@ function Diagnostico(respuestaUsuario, matriz, umbral) {
         temporal = [];
         minimosSumados[i] = [enfermedad[0], sumaMinimosFila];
         sumaMinimosFila = 0;
-        console.log("Sus minimos son " + min[i])
+        // console.log("Sus minimos son " + min[i])
         console.log("La suma de los minimos en enfermedad " + minimosSumados[i][0] + " es " + minimosSumados[i][1]);
-
-
-        //NOtas que deben hacer en este codigo:   YA LO IMPLEMENTE TODO
-        //sumar los mininos
-        //La maxima sumado
-        //mencionar las primeras enf cuando son muy cercanos
-        //
-
-        //especifico: lo mismo pero con menos enfermedades
+        umbral = umbral + minimosSumados[i][1];
     }
-    console.log("\n Minimos Sumados: ------------------")
-    console.log(minimosSumados)
+    // console.log("-----------------------------------------------------");
+    // console.log("\n Minimos Sumados: \n");
+    // console.log(minimosSumados);
+    umbral = umbral / 10;
+    console.log("-----------------------------------------------------");
+    console.log("El umbral es: " + umbral);
 
     return EnfermedadSeleccionada(minimosSumados, umbral);
 }
@@ -54,34 +53,35 @@ function EnfermedadSeleccionada(minimosSumados, umbral) {
     const minimosSumadosOrdenados = bubbleSort(minimosSumados);
     console.log(minimosSumadosOrdenados);
 
-    var respuesta=[];
-    for (let e = 0; e < minimosSumadosOrdenados.length; e++) {//Validar que enfermedades sí sobrepasan el umbra
-        if(minimosSumadosOrdenados[e][1] > umbral){
-            respuesta.push(minimosSumadosOrdenados[e]);            
-        }        
+    var respuesta = [];
+    var temporal = true;
+    let e = 0;
+    while (temporal) {
+        //console.log(parseFloat(minimosSumadosOrdenados[e][1]) + " > " + umbral)
+        if (parseFloat(minimosSumadosOrdenados[e][1]) > umbral) {
+            if (e == 0) {
+                respuesta.push(minimosSumadosOrdenados[e]);
+            } else {
+                if (respuesta[respuesta.length - 1][1] <= (parseFloat(minimosSumadosOrdenados[e][1]) + 0.19)) { //0.19 es el valor que hay de diferencia entre el minimo sumado entre 2 enfermedades, si tiene una diferencia mayor a 0.15 ya no pasa
+                    respuesta.push(minimosSumadosOrdenados[e]);
+                } else {
+                    temporal = false;
+                }
+            }
+            e++;
+        } else {
+            temporal = false;
+        }
     }
-    
-    //Verificar que las enfermedades que sobrepasan el umbral tengan un margen de valor mínimo. EJ: 2.7, 2.72, 2.27, y no sean asi: 2.7 2.9 3.2
+    console.log("-----------------------------------------------------");
+    console.log("Los valores que sobrepasan el umbral y que tienen un valor con un rango menor a 0.19 son:");
+    console.log(respuesta);
 
-
-    if (respuesta.length != 0 ) {
+    if (respuesta.length != 0) {
         return respuesta; //Devueve el nombre y el valor maximo que tubo esa enfermedad
-    }else {
-        return []//[['', -1]];//Devueve el nombre vacio (no existe) y -1 como valor maximo (no existió) debido al umbral;
+    } else {
+        return []//Devuelve arreglo vacio por que no se encontro ninguna enfermedad
     }
-
-    // let mayor;
-
-    // mayor = minimosSumadosOrdenados[0]
-
-    // if (mayor[1] > umbral) {//DUDA ES MAYOR O IGUAL o solo mayor QUE EL UMBRALconsole.log("\n ---------------------------");
-    //     console.log("\n ////////////////// \n El mayor es " + mayor);
-    //     return [mayor];  //Devueve el id y el valor maximo que tubo esa enfermedad
-    // } else {
-    //     console.log("\n ---------------------------");
-    //     console.log("Ninguna enfermedad sobrepaso el umbral");
-    //     return [['', -1]];//Devueve el nombre vacio (no existe) y -1 como valor maximo (no existió) debido al umbral;
-    // }
 }
 
 module.exports = {

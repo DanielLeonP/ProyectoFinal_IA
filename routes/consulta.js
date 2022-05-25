@@ -20,7 +20,7 @@ router.get('/Diagnostico-Especifico', function (req, res, next) {
 });
 
 router.post('/Resultados-Diagnostico-General', function (req, res, next) {
-    //var reqBody = req.body;
+
     var manchasMarrones = parseFloat(req.body.manchasMarrones);
     var manchasBlancas = parseFloat(req.body.manchasBlancas);
     var manchasRojas = parseFloat(req.body.manchasRojas);
@@ -36,12 +36,14 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
     var dolorGangrena = parseFloat(req.body.dolorGangrena);
     var granosSebo = parseFloat(req.body.granosSebo);
     var ronchas = parseFloat(req.body.ronchas);
-    const respuestaUsuario =[manchasMarrones,manchasBlancas, manchasRojas, descamacion, dolorSangrado, dolorPicazon, lunares, dolorAmpollas, hongos, sudoracion, inflamacion, pielSeca, dolorGangrena, granosSebo, ronchas];
+    const respuestaUsuario = [manchasMarrones, manchasBlancas, manchasRojas, descamacion, dolorSangrado, dolorPicazon, lunares, dolorAmpollas, hongos, sudoracion, inflamacion, pielSeca, dolorGangrena, granosSebo, ronchas];
+
+
+    console.log("-----------------------------------------------------");
+    console.log("Respuesta del usuario:");
     console.log(respuestaUsuario)
 
-
     //const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
-    const umbral = 3;
 
     //Matriz Enfermedades x sintomas
     let matriz = [];
@@ -57,9 +59,9 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
                 for (var i = 0; i < rows.length; i++) {
                     matriz.push([rows[i].nombre, rows[i].manchasMarrones, rows[i].manchasBlancas, rows[i].manchasRojas, rows[i].descamacionDeLaPiel, rows[i].SangradoDeLaPiel, rows[i].Picazon, rows[i].Lunares, rows[i].ampollas, rows[i].hongos, rows[i].sudoracion, rows[i].inflamacionDeLaPiel, rows[i].pielSeca, rows[i].pielGangena, rows[i].granosConSebo, rows[i].ronchas]);
                 }
-                console.log(matriz)
+                //console.log(matriz)
                 //usa la funcion Diagnostico que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
-                let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz, umbral);
+                let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz);
 
 
                 var nombreEnfermedades = "("
@@ -79,7 +81,7 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
 
                 } else { //existio almenos una enfermedad que paso el umbral
                     //iniciar conexion
-                    console.log("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";")
+                    //console.log("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";")
                     db = database.conectar();
                     //realizar consulta
                     db.query("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";",
@@ -97,7 +99,7 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
                                     }
                                 }
                                 idEnfermedades = idEnfermedades + ")";
-                                console.log("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;")
+                                //console.log("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;")
 
                                 //Obtener recomendaciones de la enfermedad
                                 db = database.conectar();
@@ -125,10 +127,80 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
 });
 
 router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
+    var reqBody = req.body;
+    console.log(reqBody)
 
-    const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
-    const umbral = 2.6;
-    var Enfermedades = "'Poiderma', 'Dermatitis'";
+    var CloasmaMelasma = req.body.CloasmaMelasma;
+    var Poiderma = req.body.Poiderma;
+    var Dermatitis = req.body.Dermatitis;
+    var Celulitis = req.body.Celulitis;
+    var Eczema = req.body.Eczema;
+    var Urticaria = req.body.Urticaria;
+    var Psoriasis = req.body.Psoriasis;
+    var CancerDePiel = req.body.CancerDePiel;
+    var Acne = req.body.Acne;
+    var Vitiligo = req.body.Vitiligo;
+
+    var Enfermedades = "";
+
+    if (CloasmaMelasma == 'on') {
+        Enfermedades = Enfermedades + "'Cloasma / Melasma',"
+    }
+    if (Poiderma == 'on') {
+        Enfermedades = Enfermedades + "'Poiderma',"
+    }
+    if (Dermatitis == 'on') {
+        Enfermedades = Enfermedades + "'Dermatitis',"
+    }
+    if (Celulitis == 'on') {
+        Enfermedades = Enfermedades + "'Celulitis',"
+    }
+    if (Eczema == 'on') {
+        Enfermedades = Enfermedades + "'Eczema',"
+    }
+    if (Urticaria == 'on') {
+        Enfermedades = Enfermedades + "'Urticaria',"
+    }
+    if (Psoriasis == 'on') {
+        Enfermedades = Enfermedades + "'Psoriasis',"
+    }
+    if (CancerDePiel == 'on') {
+        Enfermedades = Enfermedades + "'Cáncer de Piel',"
+    }
+    if (Acne == 'on') {
+        Enfermedades = Enfermedades + "'Acné',"
+    }
+    if (Vitiligo == 'on') {
+        Enfermedades = Enfermedades + "'Vitíligio',"
+    }
+    if (Enfermedades.length != 0) {
+        Enfermedades = Enfermedades.substring(0, Enfermedades.length - 1);
+    }
+
+
+    var manchasMarrones = parseFloat(req.body.manchasMarrones);
+    var manchasBlancas = parseFloat(req.body.manchasBlancas);
+    var manchasRojas = parseFloat(req.body.manchasRojas);
+    var descamacion = parseFloat(req.body.descamacion);
+    var dolorSangrado = parseFloat(req.body.dolorSangrado);
+    var dolorPicazon = parseFloat(req.body.dolorPicazon);
+    var lunares = parseFloat(req.body.lunares);
+    var dolorAmpollas = parseFloat(req.body.dolorAmpollas);
+    var hongos = parseFloat(req.body.hongos);
+    var sudoracion = parseFloat(req.body.sudoracion);
+    var inflamacion = parseFloat(req.body.inflamacion);
+    var pielSeca = parseFloat(req.body.pielSeca);
+    var dolorGangrena = parseFloat(req.body.dolorGangrena);
+    var granosSebo = parseFloat(req.body.granosSebo);
+    var ronchas = parseFloat(req.body.ronchas);
+
+    const respuestaUsuario = [manchasMarrones, manchasBlancas, manchasRojas, descamacion, dolorSangrado, dolorPicazon, lunares, dolorAmpollas, hongos, sudoracion, inflamacion, pielSeca, dolorGangrena, granosSebo, ronchas];
+
+    console.log("Enfermedades: " + Enfermedades);
+    console.log("Respuestas de usuario:" + respuestaUsuario);
+
+    //const respuestaUsuario = [0, 0.3, 0.5, 0.4, 08, 0.9, 0.4, 0.0, 0.7, 0.1, 0.1, 0.6, 0.2, 0.0, 0.5];
+    //var Enfermedades = "'Poiderma', 'Dermatitis'";
 
     //Matriz Enfermedades x sintomas
     let matriz = [];
@@ -145,10 +217,10 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
                 for (var i = 0; i < rows.length; i++) {
                     matriz.push([rows[i].nombre, rows[i].manchasMarrones, rows[i].manchasBlancas, rows[i].manchasRojas, rows[i].descamacionDeLaPiel, rows[i].SangradoDeLaPiel, rows[i].Picazon, rows[i].Lunares, rows[i].ampollas, rows[i].hongos, rows[i].sudoracion, rows[i].inflamacionDeLaPiel, rows[i].pielSeca, rows[i].pielGangena, rows[i].granosConSebo, rows[i].ronchas]);
                 }
-                console.log(matriz)
+                //console.log(matriz)
 
                 //usa la funcion Diagnostico que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
-                let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz, umbral);
+                let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz);
 
                 var nombreEnfermedades = "("
                 for (let h = 0; h < respuestaDiagnostico.length; h++) {
@@ -167,7 +239,7 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
 
                 } else { //existio una enfermedad que paso el umbral
                     //obtener datos de la enfermedadad con la que coincide
-                    console.log("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";")
+                    // console.log("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";")
                     //iniciar conexion
                     db = database.conectar();
                     //realizar consulta
@@ -187,7 +259,7 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
                                 }
                                 idEnfermedades = idEnfermedades + ")";
 
-                                console.log("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;")
+                                //console.log("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;")
 
                                 //Obtener recomendaciones de la enfermedad
                                 db = database.conectar();
@@ -215,3 +287,10 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
 });
 
 module.exports = router;
+
+
+//COSAS QUE FALTAN
+//REVISEN SI FUNCIONA BIEN
+//VALIDAR QUE EN DIAGNOSTICO ESPECIFICO SEAN ALMENOS 2 ENFERMEDADES SELECCIONADAS
+//VALIDAR QUE SIEMPRE SEAN REQUERIDAS CADA PREGUNTA EN D GENERAL Y DE ESPECIFICO
+//RESULTADOS-EJS
