@@ -30,7 +30,7 @@ function Diagnostico(respuestaUsuario, matriz) {
     // console.log("-----------------------------------------------------");
     // console.log("\n Minimos Sumados: \n");
     // console.log(minimosSumados);
-    umbral = umbral / 10;
+    //umbral = umbral / 10;
     console.log("-----------------------------------------------------");
     console.log("El umbral es: " + umbral);
 
@@ -62,7 +62,7 @@ function EnfermedadSeleccionada(minimosSumados, umbral) {
             if (e == 0) {
                 respuesta.push(minimosSumadosOrdenados[e]);
             } else {
-                if (respuesta[respuesta.length - 1][1] <= (parseFloat(minimosSumadosOrdenados[e][1]) + 0.19)) { //0.19 es el valor que hay de diferencia entre el minimo sumado entre 2 enfermedades, si tiene una diferencia mayor a 0.15 ya no pasa
+                if (respuesta[respuesta.length - 1][1] <= (parseFloat(minimosSumadosOrdenados[e][1]) + 0.13)) { //0.19 es el valor que hay de diferencia entre el minimo sumado entre 2 enfermedades, si tiene una diferencia mayor a 0.15 ya no pasa
                     respuesta.push(minimosSumadosOrdenados[e]);
                 } else {
                     temporal = false;

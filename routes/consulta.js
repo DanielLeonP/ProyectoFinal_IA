@@ -77,7 +77,7 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
 
                 if (nombreEnfermedades == "()") { //No se recibio ninguna enfermedad
                     res.status(200);
-                    res.json({ Enfermedad: "Ninguna enfermedad coincide con los sintomas", Recomendaciones: {} });
+                    res.render('diagnostico.ejs', {Enfermedades: {}, Recomendaciones: {}, respuesta:"false"});
 
                 } else { //existio almenos una enfermedad que paso el umbral
                     //iniciar conexion
@@ -85,17 +85,17 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
                     db = database.conectar();
                     //realizar consulta
                     db.query("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";",
-                        function (err, results, fields) {
+                        function (err, REnfermedades, fields) {
                             if (err) {
                                 console.log(err)
                             } else {
                                 //OBTENER ID DE TODAS LAS ENFERMEDADES Y CONCATENARLAS EN VARIABLE
                                 var idEnfermedades = "(";
-                                for (var i = 0; i < results.length; i++) {
-                                    if (i + 1 == results.length) {
-                                        idEnfermedades = idEnfermedades + results[i].idEnfermedad;
+                                for (var i = 0; i < REnfermedades.length; i++) {
+                                    if (i + 1 == REnfermedades.length) {
+                                        idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad;
                                     } else {
-                                        idEnfermedades = idEnfermedades + results[i].idEnfermedad + ",";
+                                        idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad + ",";
                                     }
                                 }
                                 idEnfermedades = idEnfermedades + ")";
@@ -105,13 +105,12 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
                                 db = database.conectar();
                                 //realizar consulta
                                 db.query("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;",
-                                    function (err, results2) {
+                                    function (err, RRecomendaciones) {
                                         if (err) {
                                             console.log(err)
                                         } else {
                                             res.status(200);
-                                            // res.json({ "Enfermedad": results[0], "Recomendaciones": results2 });
-                                            res.render('resultados.ejs', {Enfermedad: results[0], Recomendaciones: results2});
+                                            res.render('diagnostico.ejs', {Enfermedades: REnfermedades, Recomendaciones: RRecomendaciones, respuesta:"true"});
 
                                         }
                                     })
@@ -237,7 +236,7 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
 
                 if (nombreEnfermedades == "()") { //No se recibio ninguna enfermedad
                     res.status(200);
-                    res.json({ Enfermedad: "Ninguna enfermedad coincide con los sintomas", Recomendaciones: {} });
+                    res.render('diagnostico.ejs', {Enfermedades: {}, Recomendaciones: {}, respuesta:"false"});
 
                 } else { //existio una enfermedad que paso el umbral
                     //obtener datos de la enfermedadad con la que coincide
@@ -246,17 +245,17 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
                     db = database.conectar();
                     //realizar consulta
                     db.query("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";",
-                        function (err, results, fields) {
+                        function (err, REnfermedades, fields) {
                             if (err) {
                                 console.log(err)
                             } else {
 
                                 var idEnfermedades = "(";
-                                for (var i = 0; i < results.length; i++) {
-                                    if (i + 1 == results.length) {
-                                        idEnfermedades = idEnfermedades + results[i].idEnfermedad;
+                                for (var i = 0; i < REnfermedades.length; i++) {
+                                    if (i + 1 == REnfermedades.length) {
+                                        idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad;
                                     } else {
-                                        idEnfermedades = idEnfermedades + results[i].idEnfermedad + ",";
+                                        idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad + ",";
                                     }
                                 }
                                 idEnfermedades = idEnfermedades + ")";
@@ -267,12 +266,12 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
                                 db = database.conectar();
                                 //realizar consulta
                                 db.query("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;",
-                                    function (err, results2) {
+                                    function (err, RRecomendaciones) {
                                         if (err) {
                                             console.log(err)
                                         } else {
                                             res.status(200);
-                                            res.json({ "Enfermedad": results[0], "Recomendaciones": results2 });
+                                            res.render('diagnostico.ejs', {Enfermedades: REnfermedades, Recomendaciones: RRecomendaciones, respuesta:"true"});
                                         }
                                     })
                                 //Terminar conexion
