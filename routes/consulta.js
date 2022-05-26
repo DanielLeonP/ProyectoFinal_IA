@@ -286,7 +286,9 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
     //Terminar conexion
     db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
 });
-
+router.get('/Modulo-Precargado', function (req, res, next) {
+    res.render('modulo.ejs');
+});
 module.exports = router;
 
 

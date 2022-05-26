@@ -24,13 +24,13 @@
                 
             </b></div>
         </a>
-        <a href="">
+        <a href="/Modulo-Precargado">
             <div class="navbar-option"><b>Módulo Precargado</b></div>
         </a>
     </div>
         <% if(respuesta == "true") { %>
             <% for(Enfermedad of Enfermedades) { %>
-                <div class="info-container"></div>
+                <div class="info-container">
                     <h1 id="nombreEnfermedad"> <%= Enfermedad.nombre %> </h1>
                     <h2 id="descripcionEnfermedad">Descripción</h2>
                     <p id="infoDescripcion" > <%= Enfermedad.descripcion %> </p>
