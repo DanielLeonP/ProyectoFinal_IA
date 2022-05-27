@@ -1,3 +1,11 @@
+
+DROP DATABASE IF EXISTS quickstartdb;
+
+CREATE DATABASE quickstartdb;
+
+USE quickstartdb;
+
+
 CREATE TABLE Enfermedades (
     idEnfermedad INT PRIMARY KEY AUTO_INCREMENT,
     nombre VARCHAR(30) NOT NULL,
@@ -48,7 +56,7 @@ INSERT INTO Recomendaciones
 
 INSERT INTO Enfermedades 
 ( nombre, manchasMarrones, manchasBlancas, manchasRojas, descamacionDeLaPiel, SangradoDeLaPiel, Picazon, Lunares, ampollas, hongos, sudoracion, inflamacionDeLaPiel, pielSeca, pielGangena, granosConSebo, ronchas, descripcion, origen) 
-VALUES ( 'Poiderma', 0.1, 0.0, 0.0, 0.1, 0.7, 0.9, 0.1, 0.4, 0.3, 0.1, 0.1, 0.1, 0.9, 0.2, 0.0, 'Es un trastorno poco frecuente que provoca la aparición de llagas grandes y dolorosas (úlceras) en la piel, en especial en las piernas, es una dermatosis infrecuente, inflamatoria, destructiva, caracterizada por nódulos o pústulas hemorrágicas dolorosas que al romperse forman úlceras que se agrandan progresivamente.
+VALUES ( 'Pioderma', 0.1, 0.0, 0.0, 0.1, 0.7, 0.9, 0.1, 0.4, 0.3, 0.1, 0.1, 0.1, 0.9, 0.2, 0.0, 'Es un trastorno poco frecuente que provoca la aparición de llagas grandes y dolorosas (úlceras) en la piel, en especial en las piernas, es una dermatosis infrecuente, inflamatoria, destructiva, caracterizada por nódulos o pústulas hemorrágicas dolorosas que al romperse forman úlceras que se agrandan progresivamente.
 ','Se desconocen las causas exactas del pioderma gangrenoso, pero parece ser un trastorno del sistema inmunitario. 
 Aquellas personas que padecen ciertos trastornos ocultos, tales como enfermedad intestinal inflamatoria o artritis, tienen mayor riesgo de padecer pioderma gangrenoso.
 Esta afección no es infecciosa ni contagiosa. A menudo se asocia con enfermedades autoinmunes, como la colitis ulcerosa, la enfermedad de Crohn y la artritis. Además, puede tener un componente genético.
@@ -207,10 +215,3 @@ INSERT INTO Recomendaciones
 ',10);
 
 
-
-//eliminar todo
-DROP DATABASE IF EXISTS quickstartdb;
-//crear
-CREATE DATABASE quickstartdb;
-//usar bd
-USE quickstartdb;

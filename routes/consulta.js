@@ -132,7 +132,7 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
     console.log(reqBody)
 
     var CloasmaMelasma = req.body.CloasmaMelasma;
-    var Poiderma = req.body.Poiderma;
+    var Pioderma = req.body.Pioderma;
     var Dermatitis = req.body.Dermatitis;
     var Celulitis = req.body.Celulitis;
     var Eczema = req.body.Eczema;
@@ -147,8 +147,8 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
     if (CloasmaMelasma == 'on') {
         Enfermedades = Enfermedades + "'Cloasma / Melasma',"
     }
-    if (Poiderma == 'on') {
-        Enfermedades = Enfermedades + "'Poiderma',"
+    if (Pioderma == 'on') {
+        Enfermedades = Enfermedades + "'Pioderma',"
     }
     if (Dermatitis == 'on') {
         Enfermedades = Enfermedades + "'Dermatitis',"
