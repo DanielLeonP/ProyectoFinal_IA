@@ -27,41 +27,8 @@ CREATE TABLE Recomendaciones (
     idEnfermedad INT
 );
 
-
-
-
-CREATE TABLE Usuarios (
-    idUsuario INT PRIMARY KEY AUTO_INCREMENT, 
-    nombre VARCHAR(20) NOT NULL,
-    apellido VARCHAR(50) NOT NULL, 
-    correo VARCHAR(30) UNIQUE NOT NULL, 
-    contrasena VARCHAR(20)  NOT NULL
-);
-
-
-CREATE TABLE Resultados (
-    idResultado INT PRIMARY KEY AUTO_INCREMENT, 
-    nombreEnfermedad VARCHAR(30) NOT NULL,
-    manchasMarrones FLOAT NOT NULL,
-    manchasBlancas FLOAT NOT NULL,
-    manchasRojas FLOAT NOT NULL,
-    descamacionDeLaPiel FLOAT NOT NULL,
-    SangradoDeLaPiel FLOAT NOT NULL,
-    Picazon FLOAT NOT NULL,
-    Lunares FLOAT NOT NULL,
-    ampollas FLOAT NOT NULL,
-    hongos FLOAT NOT NULL,
-    sudoracion FLOAT NOT NULL,
-    inflamacionDeLaPiel FLOAT NOT NULL,
-    idUsuario int    
-);
-
 ALTER TABLE Recomendaciones
     ADD FOREIGN KEY (idEnfermedad) REFERENCES Enfermedades(idEnfermedad);
-
-ALTER TABLE Resultados
-    ADD FOREIGN KEY (idUsuario) REFERENCES Usuarios(idUsuario);
-
 
 INSERT INTO Enfermedades 
 ( nombre, manchasMarrones, manchasBlancas, manchasRojas, descamacionDeLaPiel, SangradoDeLaPiel, Picazon, Lunares, ampollas, hongos, sudoracion, inflamacionDeLaPiel, pielSeca, pielGangena, granosConSebo, ronchas, descripcion, origen) 
@@ -238,7 +205,6 @@ INSERT INTO Recomendaciones
 INSERT INTO Recomendaciones 
 ( recomendacion, idEnfermedad) VALUES ('Cuando se trata de vitíligos más extensos se suele emplear lo que se conoce como foto quimioterapia oral que consiste en la administración de un fármaco por vía oral, más la exposición a rayos UVA (PUVA). Se logra la repigmentación en ocasiones de un 50% de los casos.
 ',10);
-
 
 
 
