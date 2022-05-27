@@ -172,7 +172,7 @@ router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
         Enfermedades = Enfermedades + "'Acné',"
     }
     if (Vitiligo == 'on') {
-        Enfermedades = Enfermedades + "'Vitíligio',"
+        Enfermedades = Enfermedades + "'Vitíligo',"
     }
     if (Enfermedades.length != 0) {
         Enfermedades = Enfermedades.substring(0, Enfermedades.length - 1);
