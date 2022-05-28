@@ -13,16 +13,14 @@
 <body>
     
     <div class="navbar" id="navbar-despecifico">
-        <a href="index.html">
+        <a href="/">
             <div class="navbar-option"><b>Inicio</b></div>
         </a>
-        <a href="dgeneral.html">
+        <a href="/Diagnostico-General">
             <div class="navbar-option"><b>Diagnóstico General</b></div>
         </a>
-        <a href="">
-            <div class="navbar-option"><b>Diagnóstico Específico
-                
-            </b></div>
+        <a href="/Diagnostico-Especifico">
+            <div class="navbar-option"><b>Diagnóstico Específico</b></div>
         </a>
         <a href="/Modulo-Precargado">
             <div class="navbar-option"><b>Módulo Precargado</b></div>
@@ -34,10 +32,10 @@
                     <h1 id="nombreEnfermedad"> <%= Enfermedad.nombre %> </h1>
                     <h2 id="descripcionEnfermedad">Descripción</h2>
                     <p id="infoDescripcion" > <%= Enfermedad.descripcion %> </p>
-                    <h2 id="origenEnfermedad"> Origen/Causas </h2>
+                    <h2 id="origenEnfermedad"> Origen / Causas </h2>
                     <p id="infoOrigen" > <%= Enfermedad.origen %> </p>
                     
-                    <h2 id="recomendEnfermedad">Recomendaciones/Tratamiento</h2>
+                    <h2 id="recomendEnfermedad">Recomendaciones / Tratamiento</h2>
                     <% for(Recomendacion of Recomendaciones) { %>
                         <% if(Recomendacion.idEnfermedad == Enfermedad.idEnfermedad) { %>
                             <p id="infoRecomend"><%= Recomendacion.recomendacion %></p>
@@ -46,15 +44,11 @@
                 </div>
             <% }; %>
         <% } else { %>            
-            <p id="infoRecomend">Al parecer ninguna de las enfermedades coincide con tus síntomas</p>
+            <p id="infoRecomend" style="font-size: 400%; word-break: break-word; padding: 4% 15%; box-sizing: border-box;">Al parecer ninguna de las enfermedades coincide con tus síntomas</p>
         <% } %>   
-       
         
-
     <div class="container-bottom">
-
         <button id="backIndex" onclick="location.href='/'">Volver al Inicio</button>
-    
     </div>
     <footer></footer>
 </body>
