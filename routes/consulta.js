@@ -35,87 +35,83 @@ router.post('/Resultados-Diagnostico-General', function (req, res, next) {
     var dolorGangrena = parseFloat(req.body.dolorGangrena);
     var granosSebo = parseFloat(req.body.granosSebo);
     var ronchas = parseFloat(req.body.ronchas);
+    
+    const respuestaUsuario = [manchasMarrones, manchasBlancas, manchasRojas, descamacion, dolorSangrado, dolorPicazon, lunares, dolorAmpollas, hongos, sudoracion, inflamacion, pielSeca, dolorGangrena, granosSebo, ronchas];
 
-    if(isNaN(manchasMarrones) || isNaN(manchasBlancas) || isNaN(manchasRojas) || isNaN(descamacion) || isNaN(dolorSangrado) || isNaN(dolorPicazon) || isNaN(lunares) || isNaN(dolorAmpollas) || isNaN(hongos) || isNaN(sudoracion) || isNaN(inflamacion) || isNaN(pielSeca) || isNaN(dolorGangrena) || isNaN(granosSebo) || isNaN(ronchas)){
-        alert("Por favor, completa el formulario para poder diagnosticar.");
-    }else{
-        const respuestaUsuario = [manchasMarrones, manchasBlancas, manchasRojas, descamacion, dolorSangrado, dolorPicazon, lunares, dolorAmpollas, hongos, sudoracion, inflamacion, pielSeca, dolorGangrena, granosSebo, ronchas];
-
-        // Matriz Enfermedades x sintomas
-        let matriz = [];
-        // Iniciar conexion
-        db = database.conectar();
-        // Realizar consulta
-        db.query("SELECT * FROM Enfermedades;",
-            function (err, rows, fields) {
-                if (err) {
-                    console.log(err)
-                } else {
-                    // Llena la matriz enfermedades x sintomas
-                    for (var i = 0; i < rows.length; i++) {
-                        matriz.push([rows[i].nombre, rows[i].manchasMarrones, rows[i].manchasBlancas, rows[i].manchasRojas, rows[i].descamacionDeLaPiel, rows[i].SangradoDeLaPiel, rows[i].Picazon, rows[i].Lunares, rows[i].ampollas, rows[i].hongos, rows[i].sudoracion, rows[i].inflamacionDeLaPiel, rows[i].pielSeca, rows[i].pielGangena, rows[i].granosConSebo, rows[i].ronchas]);
-                    }
-                    // Usa la funcion Diagnostico que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
-                    let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz);
-                    var nombreEnfermedades = "("
-                    for (let h = 0; h < respuestaDiagnostico.length; h++) {
-                        if (h + 1 == respuestaDiagnostico.length) {
-                            nombreEnfermedades = nombreEnfermedades + "'" + respuestaDiagnostico[h][0] + "'";
-                        } else {
-                            nombreEnfermedades = nombreEnfermedades + "'" + respuestaDiagnostico[h][0] + "',";
-                        }
-
-                    }
-                    nombreEnfermedades = nombreEnfermedades + ")";
-
-                    if (nombreEnfermedades == "()") { // No se recibio ninguna enfermedad
-                        res.status(200);
-                        res.render('diagnostico.ejs', {Enfermedades: {}, Recomendaciones: {}, respuesta:"false"});
-
-                    } else { // Existio almenos una enfermedad que paso el umbral
-                        // Iniciar conexion
-                        db = database.conectar();
-                        // Realizar consulta
-                        db.query("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";",
-                            function (err, REnfermedades, fields) {
-                                if (err) {
-                                    console.log(err)
-                                } else {
-                                    // Obtener ID de todas las enfermedades y concatenarlas en variable
-                                    var idEnfermedades = "(";
-                                    for (var i = 0; i < REnfermedades.length; i++) {
-                                        if (i + 1 == REnfermedades.length) {
-                                            idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad;
-                                        } else {
-                                            idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad + ",";
-                                        }
-                                    }
-                                    idEnfermedades = idEnfermedades + ")";
-
-                                    // Obtener recomendaciones de la enfermedad
-                                    db = database.conectar();
-                                    // Realizar consulta
-                                    db.query("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;",
-                                        function (err, RRecomendaciones) {
-                                            if (err) {
-                                                console.log(err)
-                                            } else {
-                                                res.status(200);
-                                                res.render('diagnostico.ejs', {Enfermedades: REnfermedades, Recomendaciones: RRecomendaciones, respuesta:"true"});
-                                            }
-                                        })
-                                    // Terminar conexion
-                                    db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
-                                }
-                            })
-                        // Terminar conexion
-                        db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
-                    }
+    // Matriz Enfermedades x sintomas
+    let matriz = [];
+    // Iniciar conexion
+    db = database.conectar();
+    // Realizar consulta
+    db.query("SELECT * FROM Enfermedades;",
+        function (err, rows, fields) {
+            if (err) {
+                console.log(err)
+            } else {
+                // Llena la matriz enfermedades x sintomas
+                for (var i = 0; i < rows.length; i++) {
+                    matriz.push([rows[i].nombre, rows[i].manchasMarrones, rows[i].manchasBlancas, rows[i].manchasRojas, rows[i].descamacionDeLaPiel, rows[i].SangradoDeLaPiel, rows[i].Picazon, rows[i].Lunares, rows[i].ampollas, rows[i].hongos, rows[i].sudoracion, rows[i].inflamacionDeLaPiel, rows[i].pielSeca, rows[i].pielGangena, rows[i].granosConSebo, rows[i].ronchas]);
                 }
-            })
-        // Terminar conexion
-        db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
-    }
+                // Usa la funcion Diagnostico que realiza el proceso de buscar el minimo, sumar los maximos y devolver: [nombreEnfermedad, valor que resulto]
+                let respuestaDiagnostico = diagnostico.Diagnostico(respuestaUsuario, matriz);
+                var nombreEnfermedades = "("
+                for (let h = 0; h < respuestaDiagnostico.length; h++) {
+                    if (h + 1 == respuestaDiagnostico.length) {
+                        nombreEnfermedades = nombreEnfermedades + "'" + respuestaDiagnostico[h][0] + "'";
+                    } else {
+                        nombreEnfermedades = nombreEnfermedades + "'" + respuestaDiagnostico[h][0] + "',";
+                    }
+
+                }
+                nombreEnfermedades = nombreEnfermedades + ")";
+
+                if (nombreEnfermedades == "()") { // No se recibio ninguna enfermedad
+                    res.status(200);
+                    res.render('diagnostico.ejs', {Enfermedades: {}, Recomendaciones: {}, respuesta:"false"});
+
+                } else { // Existio almenos una enfermedad que paso el umbral
+                    // Iniciar conexion
+                    db = database.conectar();
+                    // Realizar consulta
+                    db.query("SELECT * FROM Enfermedades WHERE nombre IN " + nombreEnfermedades + ";",
+                        function (err, REnfermedades, fields) {
+                            if (err) {
+                                console.log(err)
+                            } else {
+                                // Obtener ID de todas las enfermedades y concatenarlas en variable
+                                var idEnfermedades = "(";
+                                for (var i = 0; i < REnfermedades.length; i++) {
+                                    if (i + 1 == REnfermedades.length) {
+                                        idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad;
+                                    } else {
+                                        idEnfermedades = idEnfermedades + REnfermedades[i].idEnfermedad + ",";
+                                    }
+                                }
+                                idEnfermedades = idEnfermedades + ")";
+
+                                // Obtener recomendaciones de la enfermedad
+                                db = database.conectar();
+                                // Realizar consulta
+                                db.query("SELECT * FROM Recomendaciones WHERE idEnfermedad IN " + idEnfermedades + " ORDER BY idEnfermedad;",
+                                    function (err, RRecomendaciones) {
+                                        if (err) {
+                                            console.log(err)
+                                        } else {
+                                            res.status(200);
+                                            res.render('diagnostico.ejs', {Enfermedades: REnfermedades, Recomendaciones: RRecomendaciones, respuesta:"true"});
+                                        }
+                                    })
+                                // Terminar conexion
+                                db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
+                            }
+                        })
+                    // Terminar conexion
+                    db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
+                }
+            }
+        })
+    // Terminar conexion
+    db.end(function (err) { err ? console.log(err) : console.log('Conexión terminada.'); });
 });
 
 router.post('/Resultados-Diagnostico-Especifico', function (req, res, next) {
