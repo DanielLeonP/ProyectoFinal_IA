@@ -1,8 +1,5 @@
 const mysql = require('mysql');
 
-
-
-
 function conectar() {
     var config =
     {

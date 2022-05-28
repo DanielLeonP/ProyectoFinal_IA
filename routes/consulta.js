@@ -278,8 +278,3 @@ router.get('/Modulo-Precargado', function (req, res, next) {
     res.render('modulo.ejs');
 });
 module.exports = router;
-
-
-
-//VALIDAR QUE EN DIAGNOSTICO ESPECIFICO SEAN ALMENOS 2 ENFERMEDADES SELECCIONADAS
-//VALIDAR QUE SIEMPRE SEAN REQUERIDAS CADA PREGUNTA EN D GENERAL Y DE ESPECIFICO
